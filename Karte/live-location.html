@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echtzeit-Standortfreigabe</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    // Initialisiere die Karte mit einem Startpunkt (z. B. Bayreuth)
+    const map = L.map('map').setView([49.945639, 11.571331], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Erstelle einen Marker für den Live-Standort des Nutzers
+    let userMarker = L.marker([49.945639, 11.571331]).addTo(map)
+        .bindPopup("Dein Standort")
+        .openPopup();
+
+    // Funktion zur Aktualisierung des Standorts
+    function updateLocation(position) {
+        const { latitude, longitude } = position.coords;
+        
+        // Bewege den Marker auf die aktuelle Position
+        userMarker.setLatLng([latitude, longitude]);
+        map.setView([latitude, longitude], 15);
+
+        userMarker.bindPopup(`Dein aktueller Standort: ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`).openPopup();
+    }
+
+    // Funktion zur Fehlermeldung, falls die Standortfreigabe fehlschlägt
+    function locationError(error) {
+        console.error("Fehler beim Zugriff auf den Standort: ", error.message);
+        alert("Standort konnte nicht abgerufen werden. Bitte Standortfreigabe aktivieren.");
+    }
+
+    // Überprüfe, ob Geolocation verfügbar ist, und starte die Echtzeit-Aktualisierung
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(updateLocation, locationError, {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 5000
+        });
+    } else {
+        alert("Geolocation wird von deinem Browser nicht unterstützt.");
+    }
+</script>
+
+</body>
+</html>
