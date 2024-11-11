@@ -1,23 +1,20 @@
 <template>
   <v-app>
     <v-main>
-      <HelloWorld/>
+      <v-container>
+        <MapComponent />
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MapComponent from "./components/MapComponent.vue";
 
 export default {
-  name: 'App',
-
+  name: "App",
   components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-}
+    MapComponent
+  }
+};
 </script>
