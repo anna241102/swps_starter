@@ -1,4 +1,6 @@
 <template>
+  import Chat from './components/Chat.vue';
+  <Chat />
   <v-app>
     <FeedbackForm />
   </v-app>
