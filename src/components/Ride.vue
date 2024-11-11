@@ -17,7 +17,6 @@
       </v-card>
     </v-dialog>
   
-    <!-- Button zur Anzeige der Stornierungsoptionen -->
     <v-btn color="red" @click="dialogVisible = true">Fahrt stornieren</v-btn>
   </template>
   
@@ -38,14 +37,14 @@
   
         // API-Aufruf zur Stornierung der Fahrt
         this.$axios
-          .post("/cancel-ride", {
-            rideId: this.$route.params.rideId, // Fahrt-ID aus der URL oder einem anderen Zustand holen
-            userId: this.$store.state.userId, // Benutzer-ID aus dem Store
+          .post('http://localhost:3000/cancel-ride', {
+            rideId: this.$route.params.rideId, // Fahrt-ID aus der URL oder Zustand
+            userId: this.$store.state.userId,  // Benutzer-ID aus dem Store
             reason: this.cancellationReason,
           })
           .then(response => {
             this.$toast.success("Fahrt erfolgreich storniert");
-            this.dialogVisible = false; // Dialog schließen
+            this.dialogVisible = false;
           })
           .catch(error => {
             this.$toast.error("Fehler beim Stornieren der Fahrt.");
