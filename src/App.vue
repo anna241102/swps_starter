@@ -1,26 +1,21 @@
+import Chat from './components/Chat.vue';
 <template>
   <v-app>
-    <!-- Deine anderen Layouts -->
+    <!-- Andere Layout-Komponenten hier -->
 
-    <!-- Hier wird die Chat-Komponente eingebunden -->
+    <!-- Chat-Komponente hier einfügen -->
     <Chat />
 
-    <!-- Deine anderen Komponenten hier -->
+    <!-- Weitere Komponenten hier -->
   </v-app>
 </template>
-
 <script>
-// Importiere die Chat-Komponente
 import Chat from './components/Chat.vue';
 
 export default {
   name: 'App',
   components: {
-    Chat, // Registriere die Chat-Komponente
+    Chat,  // Hier wird die Chat-Komponente registriert
   },
 };
 </script>
-
-<style>
-/* Deine Styles hier */
-</style>
