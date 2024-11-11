@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <!-- Deine bestehenden Layouts -->
+    <!-- Deine anderen Layouts -->
 
     <!-- Hier wird die Chat-Komponente eingebunden -->
     <Chat />
@@ -16,11 +16,11 @@ import Chat from './components/Chat.vue';
 export default {
   name: 'App',
   components: {
-    Chat, // Registriere die Komponente für die Verwendung
+    Chat, // Registriere die Chat-Komponente
   },
 };
 </script>
 
 <style>
-/* Deine bestehenden Styles */
+/* Deine Styles hier */
 </style>
