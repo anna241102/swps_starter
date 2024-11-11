@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Chat App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="message-input" placeholder="Deine Nachricht...">
+        <button id="send-btn">Senden</button>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+    <script>
+        // Firebase-Konfiguration (ersetze durch deine eigenen Konfigurationsdaten)
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialisierung von Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Anonyme Anmeldung des Nutzers
+        auth.signInAnonymously().catch(error => console.error("Anmeldefehler:", error));
+
+        // Referenz zur Nachrichten-Sammlung in Firestore
+        const messagesRef = db.collection("messages");
+
+        // Nachrichten in Echtzeit abrufen und anzeigen
+        messagesRef.orderBy("timestamp").onSnapshot(snapshot => {
+            const chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML = ""; // Bestehenden Chat-Inhalt löschen
+            snapshot.forEach(doc => {
+                const messageData = doc.data();
+                const messageElement = document.createElement("div");
+                messageElement.textContent = `${messageData.username}: ${messageData.message}`;
+                chatBox.appendChild(messageElement);
+            });
+            chatBox.scrollTop = chatBox.scrollHeight; // Scrollen zum neuesten Nachricht
+        });
+
+        // Nachricht senden
+        document.getElementById("send-btn").addEventListener("click", sendMessage);
+        document.getElementById("message-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") sendMessage();
+        });
+
+        function sendMessage() {
+            const messageInput = document.getElementById("message-input");
+            const message = messageInput.value.trim();
+            if (message === "") return;
+
+            messagesRef.add({
+                username: "Anonym", // Nutzername kann durch Authentifizierung festgelegt werden
+                message: message,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            messageInput.value = "";
+        }
+    </script>
+</body>
+</html>
