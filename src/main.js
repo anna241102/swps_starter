@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from './AppSettingsMenü.vue'
 import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 
