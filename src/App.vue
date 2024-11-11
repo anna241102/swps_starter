@@ -1,15 +1,15 @@
 <template>
   <v-app>
-    <UserProfileForm />
+    <SettingsMenu />
   </v-app>
 </template>
 
 <script>
-import UserProfileForm from './components/UserProfileForm.vue';
+import SettingsMenu from './components/SettingsMenu.vue';
 
 export default {
   components: {
-    UserProfileForm,
+    SettingsMenu,
   },
 };
 </script>
