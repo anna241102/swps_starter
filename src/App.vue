@@ -1,15 +1,26 @@
 <template>
   <v-app>
-    <UserProfileForm />
+    <!-- Deine bestehenden Layouts -->
+
+    <!-- Hier wird die Chat-Komponente eingebunden -->
+    <Chat />
+
+    <!-- Deine anderen Komponenten hier -->
   </v-app>
 </template>
 
 <script>
-import UserProfileForm from './components/UserProfileForm.vue';
+// Importiere die Chat-Komponente
+import Chat from './components/Chat.vue';
 
 export default {
+  name: 'App',
   components: {
-    UserProfileForm,
+    Chat, // Registriere die Komponente für die Verwendung
   },
 };
 </script>
+
+<style>
+/* Deine bestehenden Styles */
+</style>
