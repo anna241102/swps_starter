@@ -1,20 +1,15 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
-        <MapComponent />
-      </v-container>
-    </v-main>
+    <UserProfileForm />
   </v-app>
 </template>
 
 <script>
-import MapComponent from "./components/MapComponent.vue";
+import UserProfileForm from './components/UserProfileForm.vue';
 
 export default {
-  name: "App",
   components: {
-    MapComponent
-  }
+    UserProfileForm,
+  },
 };
 </script>

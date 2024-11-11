@@ -6,11 +6,18 @@
         <v-select
           v-model="user.role"
           :items="['Student', 'Mitarbeiter']"
-          label="Rolle"
+          label="Tätigkeit"
           required
         ></v-select>
-        <v-text-field v-model="user.university" label="Universität" required></v-text-field>
-  
+        <v-select 
+         v-model="user.university"
+         :items="['Bayreuth', 'Kulmbach']"
+         label="Universität"
+         required ></v-select>
+
+        <v-text-field v-model="user.auto" label="Auto" required></v-text-field>
+        <v-text-field v-model="user.musikauswahl" label="Musikauswahl" required></v-text-field>
+
         <v-btn :disabled="!isFormValid" color="primary" @click="createUser">Speichern</v-btn>
       </v-form>
     </v-container>
@@ -27,7 +34,9 @@
           name: '',
           email: '',
           role: '',
-          university: ''
+          university: '',
+          auto: '',
+          musikauswahl: '',
         }
       };
     },
@@ -36,7 +45,7 @@
         try {
           await axios.post("http://localhost:3000/users", this.user);
           alert("Profil erfolgreich erstellt!");
-          this.user = { name: '', email: '', role: '', university: '' }; // Formular zurücksetzen
+          this.user = { name: '', email: '', role: '', university: '', auto: '', musikauswahl: '' }; // Formular zurücksetzen
         } catch (error) {
           console.error(error);
         }
