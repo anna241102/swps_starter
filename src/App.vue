@@ -1,19 +1,15 @@
 <template>
-  import Chat from './components/Chat.vue';
-  <Chat />
   <v-app>
-    <FeedbackForm />
+    <UserProfileForm />
   </v-app>
 </template>
 
 <script>
-import Chat from './components/Chat.vue';
+import UserProfileForm from './components/UserProfileForm.vue';
 
 export default {
-  name: 'App',
   components: {
-    Chat // Hier wird die Chat-Komponente registriert
+    UserProfileForm,
   },
 };
-
 </script>
