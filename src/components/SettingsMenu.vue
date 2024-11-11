@@ -27,7 +27,7 @@
           language: localStorage.getItem("language") || "Deutsch",
           notifications: JSON.parse(localStorage.getItem("notifications")) || false,
         },
-        languages: ["Deutsch", "Englisch", "Französisch"],
+        languages: ["Deutsch", "Englisch", "Chinesisch"],
         successMessage: '',
       };
     },
