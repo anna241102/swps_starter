@@ -1,20 +1,26 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
-        <MapComponent />
-      </v-container>
-    </v-main>
+    <!-- Deine anderen Layouts und Komponenten hier -->
+
+    <!-- Hier wird die Stornierungs-Komponente eingebunden -->
+    <CancelRide />
+
+    <!-- Deine anderen Komponenten hier -->
   </v-app>
 </template>
 
 <script>
-import MapComponent from "./components/MapComponent.vue";
+// Importiere die CancelRide-Komponente
+import CancelRide from './components/CancelRide.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    MapComponent
-  }
+    CancelRide, // Registriere die Komponente für die Verwendung
+  },
 };
 </script>
+
+<style>
+/* Deine bestehenden Styles */
+</style>
