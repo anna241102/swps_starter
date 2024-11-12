@@ -7,7 +7,7 @@
   
   <script>
   // Hier importierst du nur das LogoComponent
-  import LogoComponent from './components/LogoComponent.vue';
+  import LogoComponent from './Logo/LogoComponent.vue';
   
   export default {
     name: 'App',
