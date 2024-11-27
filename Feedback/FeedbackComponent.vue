@@ -1,19 +1,19 @@
 <!-- Feedback.vue -->
 <template>
     <div class="feedback-form">
-      <h2>Feedback geben</h2>
+      <h2>Feedback geben</h2> <!--Überschrift-->
       <form @submit.prevent="submitFeedback">
         <div class="form-group">
-          <label for="positiveFeedback">Was gefällt dir gut an der App?</label>
-          <textarea
+          <label for="positiveFeedback">Was gefällt dir gut an der App?</label> <!--Erstes Textfeld-->
+          <textarea 
             id="positiveFeedback"
             v-model="positiveFeedback"
             placeholder="Dein Feedback..."
-            required
-          ></textarea>
+            required 
+          ></textarea> 
         </div>
         <div class="form-group">
-          <label for="improvementFeedback">Was können wir verbessern?</label>
+          <label for="improvementFeedback">Was können wir verbessern?</label> <!--Zweites Textfeld-->
           <textarea
             id="improvementFeedback"
             v-model="improvementFeedback"
@@ -21,23 +21,23 @@
             required
           ></textarea>
         </div>
-        <button type="submit">Abschicken</button>
+        <button type="submit">Abschicken</button> <!--einfacher Button, der das Formular absendet-->
       </form>
     </div>
   </template>
   
-  <script>
-  import axios from 'axios';
+  <script> 
+  import axios from 'axios'; //Javascript-Framework für HTTps-Request wid importiert für den Versand vo Daten an ein Backend
   
   export default {
     name: "Feedback",
-    data() {
+    data() { // speichert Feedback, was dem Benutzer gut gefällt und Verbesserugsvorschläge
       return {
         positiveFeedback: "",
         improvementFeedback: "",
       };
     },
-    methods: {
+    methods: { 
       async submitFeedback() {
         try {
           // Beispiel-Backend-URL, die die Daten verarbeitet und die E-Mail sendet
@@ -49,15 +49,15 @@
             improvementFeedback: this.improvementFeedback,
           });
   
-          if (response.status === 200) {
+          if (response.status === 200) { // Wenn der Server erfolgreich antwotet wird eine Dankesnachricht angezeigt
             alert("Vielen Dank für dein Feedback!");
             this.positiveFeedback = "";
             this.improvementFeedback = "";
           } else {
-            throw new Error("Feedback konnte nicht gesendet werden.");
+            throw new Error("Feedback konnte nicht gesendet werden."); // sonst wird bei einem Fehler eine Fehlermeldng angezeigt
           }
         } catch (error) {
-          alert("Es gab ein Problem beim Senden deines Feedbacks. Bitte versuche es später erneut.");
+          alert("Es gab ein Problem beim Senden deines Feedbacks. Bitte versuche es später erneut."); //Fehlermeldung bei Problem (z.B. Netzwerkfehler) angezeigt
           console.error(error);
         }
       },
@@ -65,15 +65,18 @@
   };
   </script>
   
-  <style scoped>
-  .feedback-form {
+  <!--zentriet das Formular und begrenzt die Breite auf 500px-->
+  <style scoped> 
+  .feedback-form { 
     max-width: 500px;
     margin: 0 auto;
   }
   
-  .form-group {
+  <!--Fügt Abstände zwischen den Formulafeldern hinzu-->
+  .form-group { 
     margin-bottom: 20px;
   }
+  
   
   textarea {
     width: 100%;
