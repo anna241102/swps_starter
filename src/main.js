@@ -7,4 +7,4 @@ loadFonts()
 
 createApp(App)
   .use(vuetify)
-  .mount('#app') //Test
+  .mount('#app')
