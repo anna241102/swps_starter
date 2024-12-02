@@ -1,0 +1,12 @@
+Dieser Ordner dient zur Übringung der einzelnen Codepakte
+How to get it:
+1) Ihr öffnet in VSCode ein neues Window (File --> New Window)
+2) Geht auf Sebastians Repo (swps_starter) und holt euch dort bei dem grünen Button "Code" den Link des Github Repos
+3) Klickt in VSCode auf "Clone Github Repository" und fügt den Link ein + Enter drücken
+4) Erstellt euch einen neuen Ordner, welchen ihr am sinnvollsten so nennt, wie das entsprechende Element heißt, was ihr coden möchtet (Bsp.: Chatfunktion --> Chat)
+5) Wählt den Ordner aus und öffnet das Github Repo direkt im Fenster
+6) Unter dem Reiter "Components" müsst ihr HelloWorld.vue löschen (rechtsklick und dann ganz unten auf Delete)
+7) Nun könnt ihr den jeweiligen Code aus den hier zur Verfügung gestellten Paketen euch kopieren und an geeigneter Stelle einsetzen (ACHTUNG: Achtet darauf, was in welcher Datei steht! Übernehmt die Dateinamen 1 zu 1)
+8) Neues Terminal öffnen
+9) npm install
+10) npm run serve
